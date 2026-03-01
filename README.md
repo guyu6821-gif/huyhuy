@@ -68,8 +68,9 @@ npm run deploy
 
 ## 🌐 URLs
 
-- **Production**: TBD (Cloudflare Pages-də yerləşdiriləcək)
-- **GitHub**: TBD (Push edildikdən sonra əlavə ediləcək)
+- **Demo**: https://3000-i778t64yl23dd1ey6kkzs-de59bda9.sandbox.novita.ai
+- **GitHub**: https://github.com/guyu6821-gif/huyhuy
+- **Production**: Render.com və ya digər static hosting platformasında deploy edilə bilər
 
 ## 📱 PWA Quraşdırma
 
