@@ -1,12 +1,13 @@
 {
   "name": "bdu-hesablayici",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "BDU Tələbə Hesablayıcı - Progressive Web App",
+  "type": "module",
   "main": "public/index.html",
   "scripts": {
     "start": "npx serve public -p 3000",
-    "build": "echo 'Static site - no build required'",
-    "deploy": "echo 'Ready for deployment to Render.com or any static hosting'",
+    "build": "echo 'No build required - static site'",
+    "deploy": "echo 'Deploy to Cloudflare Pages'",
     "test": "echo 'No tests specified'"
   },
   "keywords": [
@@ -19,6 +20,10 @@
   ],
   "author": "BDU Student",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "devDependencies": {
     "serve": "^14.2.0"
   }

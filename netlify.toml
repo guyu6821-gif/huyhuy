@@ -1,0 +1,29 @@
+# Cloudflare Pages üçün build konfiqurasiyası
+# Bu fayl Cloudflare Pages tərəfindən avtomatik tanınır
+
+[build]
+  # Build command (static site üçün build lazım deyil)
+  command = ""
+  
+  # Public qovluğu deployment üçün
+  publish = "public"
+  
+[build.environment]
+  # Node.js versiyası
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# Production environment
+[context.production]
+  command = ""
+  publish = "public"
+
+# Branch deployments
+[context.branch-deploy]
+  command = ""
+  publish = "public"
+
+# Deploy preview
+[context.deploy-preview]
+  command = ""
+  publish = "public"
