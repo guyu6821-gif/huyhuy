@@ -7,7 +7,7 @@
     <meta name="description" content="BDU Tələbə Hesablama Sistemi - Semestr balı, ÜOMG, yaş hesablayıcı">
     <title>BDU Tələbə Hesablayıcı</title>
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="/icons/icon-192.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link href="/static/styles.css" rel="stylesheet">
@@ -72,15 +72,7 @@
                 </div>
             </div>
 
-            <!-- Haqqında bölməsi (yalnız ana səhifədə) -->
-            <div class="about-section">
-                <button class="info-btn" onclick="toggleAbout()">
-                    <i class="fas fa-info"></i>
-                </button>
-                <div id="about-text" class="about-text hidden">
-                    O, boşluq yaradır.
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -97,7 +89,7 @@
                 <h3>Seminar</h3>
                 <div class="input-group">
                     <label>Seminar sayı (maks. 9):</label>
-                    <input type="number" id="seminar-count" min="0" max="9" value="0">
+                    <input type="number" id="seminar-count" min="0" max="9" placeholder="0">
                     <button onclick="createSeminarInputs()" class="btn-create">Yarat</button>
                 </div>
                 <div id="seminar-inputs"></div>
@@ -107,7 +99,7 @@
                 <h3>Kollekvium</h3>
                 <div class="input-group">
                     <label>Kollekvium sayı (maks. 4):</label>
-                    <input type="number" id="kollekvium-count" min="0" max="4" value="0">
+                    <input type="number" id="kollekvium-count" min="0" max="4" placeholder="0">
                     <button onclick="createKollekviumInputs()" class="btn-create">Yarat</button>
                 </div>
                 <div id="kollekvium-inputs"></div>
@@ -117,7 +109,7 @@
                 <h3>Sərbəst İş</h3>
                 <div class="input-group">
                     <label>Bal (0-10):</label>
-                    <input type="number" id="serbest-is" min="0" max="10" step="0.1" value="0">
+                    <input type="number" id="serbest-is" min="0" max="10" step="0.1" placeholder="0">
                 </div>
             </div>
 
@@ -136,7 +128,7 @@
                 </div>
                 <div class="input-group">
                     <label>Qayıb sayı:</label>
-                    <input type="number" id="absences" min="0" value="0">
+                    <input type="number" id="absences" min="0" placeholder="0">
                 </div>
             </div>
 
@@ -158,7 +150,7 @@
             <div class="form-section">
                 <div class="input-group">
                     <label>Fənn sayı:</label>
-                    <input type="number" id="course-count" min="1" value="1">
+                    <input type="number" id="course-count" min="1" placeholder="0">
                     <button onclick="createCourseInputs()" class="btn-create">Yarat</button>
                 </div>
                 <div id="course-inputs"></div>
@@ -182,11 +174,11 @@
             <div class="form-section">
                 <div class="input-group">
                     <label>İllik ödəniş (AZN):</label>
-                    <input type="number" id="yearly-payment" min="0" step="0.01" value="0">
+                    <input type="number" id="yearly-payment" min="0" step="0.01" placeholder="0">
                 </div>
                 <div class="input-group">
                     <label>Fənnin kredit sayı:</label>
-                    <input type="number" id="credit-count" min="1" value="1">
+                    <input type="number" id="credit-count" min="1" placeholder="0">
                 </div>
             </div>
 
@@ -208,7 +200,7 @@
             <div class="form-section">
                 <div class="input-group">
                     <label>Doğum tarixi (GG/AA/İİİİ):</label>
-                    <input type="date" id="birthdate" value="">
+                    <input type="date" id="birthdate" min="1900-01-01">
                 </div>
             </div>
 
@@ -309,6 +301,29 @@
             <button id="install-btn" class="btn-install">Quraşdır</button>
             <button id="dismiss-btn" class="btn-dismiss">×</button>
         </div>
+    </div>
+
+    <!-- Haqqında Modal -->
+    <div id="about-modal" class="about-modal hidden">
+        <div class="about-modal-content">
+            <button class="about-modal-close" onclick="closeAboutModal()">×</button>
+            <div class="about-modal-body">
+                <i class="fas fa-info-circle about-modal-icon"></i>
+                <p>O, boşluq yaradır.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Haqqında Düyməsi (yalnız ana səhifədə görünür) -->
+    <button id="about-btn" class="about-floating-btn" onclick="openAboutModal()">
+        <i class="fas fa-info"></i>
+    </button>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <img src="/icons/icon-512.png" alt="UniFy Logo" class="splash-logo">
+        <h1 class="splash-title">BDU Tələbə Hesablayıcı</h1>
+        <div class="splash-loader"></div>
     </div>
 
     <script src="/static/app.js"></script>

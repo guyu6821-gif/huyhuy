@@ -60,5 +60,6 @@
   "categories": ["education", "utilities"],
   "lang": "az",
   "dir": "ltr",
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "splash_pages": null
 }
