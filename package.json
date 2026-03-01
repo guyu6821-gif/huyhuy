@@ -1,14 +1,14 @@
 {
   "name": "bdu-hesablayici",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "description": "BDU Tələbə Hesablayıcı - Progressive Web App",
-  "type": "module",
   "main": "public/index.html",
   "scripts": {
     "start": "npx serve public -p 3000",
-    "build": "echo 'No build required - static site'",
-    "deploy": "echo 'Deploy to Cloudflare Pages'",
-    "test": "echo 'No tests specified'"
+    "build": "echo 'Static site - no build required'",
+    "deploy": "wrangler deploy",
+    "test": "echo 'No tests specified'",
+    "preview": "wrangler dev"
   },
   "keywords": [
     "bdu",
@@ -20,11 +20,8 @@
   ],
   "author": "BDU Student",
   "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
-  },
   "devDependencies": {
-    "serve": "^14.2.0"
+    "serve": "^14.2.0",
+    "wrangler": "^4.69.0"
   }
 }
