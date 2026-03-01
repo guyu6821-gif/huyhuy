@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="description" content="BDU Tələbə Hesablama Sistemi - Semestr balı, ÜOMG, yaş hesablayıcı">
+    <title>BDU Tələbə Hesablayıcı</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sabit Banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <span class="banner-text">🎓 ən ucuz sərbəst iş hazırlanması</span>
+            <a href="https://wa.me/994559406018" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Ana Səhifə -->
+    <div id="home-page" class="page active">
+        <div class="container">
+            <h1 class="main-title">🎓 BDU Tələbə Hesablayıcı</h1>
+            
+            <div class="menu-grid">
+                <div class="menu-card" onclick="navigateTo('semester')">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Semestr Balı</h3>
+                    <p>Hesablama</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('uomg')">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>ÜOMG</h3>
+                    <p>Hesablama</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('exam25')">
+                    <i class="fas fa-money-bill"></i>
+                    <h3>25% İmtahan</h3>
+                    <p>Kəsr Pulu</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('age')">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Yaş</h3>
+                    <p>Hesablayıcı</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('dictionary')">
+                    <i class="fas fa-book"></i>
+                    <h3>Lüğət</h3>
+                    <p>Akademik Sözlər</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('info')">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Məlumat</h3>
+                    <p>Faydalı Məlumatlar</p>
+                </div>
+
+                <div class="menu-card" onclick="navigateTo('links')">
+                    <i class="fas fa-link"></i>
+                    <h3>Sürətli Linklər</h3>
+                    <p>BDU Resurslara</p>
+                </div>
+            </div>
+
+            <!-- Haqqında bölməsi (yalnız ana səhifədə) -->
+            <div class="about-section">
+                <button class="info-btn" onclick="toggleAbout()">
+                    <i class="fas fa-info"></i>
+                </button>
+                <div id="about-text" class="about-text hidden">
+                    O, boşluq yaradır.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Semestr Balı Səhifəsi -->
+    <div id="semester-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">📊 Semestr Balı Hesablama</h2>
+            
+            <div class="form-section">
+                <h3>Seminar</h3>
+                <div class="input-group">
+                    <label>Seminar sayı (maks. 9):</label>
+                    <input type="number" id="seminar-count" min="0" max="9" value="0">
+                    <button onclick="createSeminarInputs()" class="btn-create">Yarat</button>
+                </div>
+                <div id="seminar-inputs"></div>
+            </div>
+
+            <div class="form-section">
+                <h3>Kollekvium</h3>
+                <div class="input-group">
+                    <label>Kollekvium sayı (maks. 4):</label>
+                    <input type="number" id="kollekvium-count" min="0" max="4" value="0">
+                    <button onclick="createKollekviumInputs()" class="btn-create">Yarat</button>
+                </div>
+                <div id="kollekvium-inputs"></div>
+            </div>
+
+            <div class="form-section">
+                <h3>Sərbəst İş</h3>
+                <div class="input-group">
+                    <label>Bal (0-10):</label>
+                    <input type="number" id="serbest-is" min="0" max="10" step="0.1" value="0">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Davamiyyət</h3>
+                <div class="input-group">
+                    <label>Saat seçin:</label>
+                    <select id="hours-select">
+                        <option value="30">30 saat</option>
+                        <option value="45">45 saat</option>
+                        <option value="60">60 saat</option>
+                        <option value="75">75 saat</option>
+                        <option value="90">90 saat</option>
+                        <option value="105">105 saat</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Qayıb sayı:</label>
+                    <input type="number" id="absences" min="0" value="0">
+                </div>
+            </div>
+
+            <button onclick="calculateSemester()" class="btn-calculate">Hesabla</button>
+            
+            <div id="semester-result" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- ÜOMG Səhifəsi -->
+    <div id="uomg-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">📈 ÜOMG Hesablama</h2>
+            
+            <div class="form-section">
+                <div class="input-group">
+                    <label>Fənn sayı:</label>
+                    <input type="number" id="course-count" min="1" value="1">
+                    <button onclick="createCourseInputs()" class="btn-create">Yarat</button>
+                </div>
+                <div id="course-inputs"></div>
+            </div>
+
+            <button onclick="calculateUOMG()" class="btn-calculate">Hesabla</button>
+            
+            <div id="uomg-result" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- 25% İmtahan Səhifəsi -->
+    <div id="exam25-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">💰 25% İmtahan (Kəsr Pulu)</h2>
+            
+            <div class="form-section">
+                <div class="input-group">
+                    <label>İllik ödəniş (AZN):</label>
+                    <input type="number" id="yearly-payment" min="0" step="0.01" value="0">
+                </div>
+                <div class="input-group">
+                    <label>Fənnin kredit sayı:</label>
+                    <input type="number" id="credit-count" min="1" value="1">
+                </div>
+            </div>
+
+            <button onclick="calculateExam25()" class="btn-calculate">Hesabla</button>
+            
+            <div id="exam25-result" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- Yaş Hesablayıcı Səhifəsi -->
+    <div id="age-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">🎂 Yaş Hesablayıcı</h2>
+            
+            <div class="form-section">
+                <div class="input-group">
+                    <label>Doğum tarixi (GG/AA/İİİİ):</label>
+                    <input type="date" id="birthdate" value="">
+                </div>
+            </div>
+
+            <button onclick="calculateAge()" class="btn-calculate">Hesabla</button>
+            
+            <div id="age-result" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- Lüğət Səhifəsi -->
+    <div id="dictionary-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">📖 Lüğət - Akademik Sözlər</h2>
+            
+            <div class="dictionary-list">
+                <div class="dictionary-item">
+                    <h3>Mühazirə</h3>
+                    <p>Müəllimin keçdiyi dərs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Məlumat Səhifəsi -->
+    <div id="info-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">ℹ️ Məlumat</h2>
+            
+            <div class="info-list">
+                <div class="info-item">
+                    <h3>🏆 Əlaçı olmaq üçün</h3>
+                    <p>Bütün fənlər 91+ olmalıdır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sürətli Linklər Səhifəsi -->
+    <div id="links-page" class="page">
+        <div class="container">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fas fa-arrow-left"></i> Geri
+            </button>
+            
+            <h2 class="page-title">🔗 Sürətli Linklər</h2>
+            
+            <div class="links-list">
+                <a href="https://share.google/M2ZIeZ1uGX63hbYwN" target="_blank" class="link-item">
+                    <i class="fas fa-university"></i>
+                    <span>BDU Rəsmi Web Saytı</span>
+                </a>
+                
+                <a href="https://share.google/7ljpthpUCiOMOeS82" target="_blank" class="link-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>SemsLogin - Akademik Portal</span>
+                </a>
+                
+                <a href="https://whatsapp.com/channel/0029Va85Ls85q08WyYoGeJ3r" target="_blank" class="link-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>BDU WhatsApp Kanal</span>
+                </a>
+                
+                <a href="https://www.instagram.com/bdu_eduaz" target="_blank" class="link-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>BDU Instagram</span>
+                </a>
+                
+                <a href="https://t.me/bdu_eduaz" target="_blank" class="link-item">
+                    <i class="fab fa-telegram"></i>
+                    <span>BDU Telegram</span>
+                </a>
+                
+                <a href="https://www.instagram.com/desespere_etoile" target="_blank" class="link-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>Sayt Sahibinin Instagram</span>
+                </a>
+                
+                <a href="https://t.me/+WUKxtnDjo2E5YTcy" target="_blank" class="link-item">
+                    <i class="fab fa-telegram"></i>
+                    <span>Tələbə Chat Qrupu</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Install Prompt -->
+    <div id="install-prompt" class="install-prompt hidden">
+        <div class="install-content">
+            <p><i class="fas fa-download"></i> Tətbiqi quraşdırın</p>
+            <button id="install-btn" class="btn-install">Quraşdır</button>
+            <button id="dismiss-btn" class="btn-dismiss">×</button>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
